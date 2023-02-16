@@ -1,0 +1,24 @@
+---
+import { wpapi } from "~/apis/wp-core/posts";
+
+export const getFeaturedImage = async (post) => {
+	// console.log('post->', JSON.stringify({ links: post._links }, null, 2));
+	const featuredImageUrl = post._links['wp:featuredmedia'];
+
+	if (featuredImageUrl) {
+		const imgResp = await fetch(featuredImageUrl[0].href);
+		const data = await imgResp.json();
+		return data.media_details.sizes;
+		// const data = await imgResp.json();
+	}
+	return {}
+};
+
+
+export const getCategory = async (categoryId:string) => {
+	if(!categoryId) return 
+	// console.log('post->', JSON.stringify({ links: post._links }, null, 2));
+	const category = await wpapi.categories().id(categoryId)
+	return category
+};
+---

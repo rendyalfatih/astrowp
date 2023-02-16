@@ -1,0 +1,16 @@
+---
+import { SITE } from '~/config.mjs';
+import { getCanonical } from '~/utils/permalinks';
+import Layout from '@themes/layouts/PageLayout.astro';
+import Homepage from '@themes/pages/Homepage.astro';
+
+const meta = {
+	title: SITE.title,
+	description: SITE.description,
+	canonical: getCanonical('/'),
+};
+---
+
+<Layout {meta}>
+	<Homepage />
+</Layout>

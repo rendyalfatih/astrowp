@@ -1,0 +1,18 @@
+---
+import Layout from '@themes/layouts/PageLayout.astro';
+import { wpapi } from '~/apis/wp-core/posts';
+import WPSinglePost from '~/components/blog/WPSinglePost.astro';
+
+const { sub } = Astro.params;
+const pageRest = await wpapi.pages().slug(sub);
+const postRest = await wpapi.posts().slug(sub);
+
+const post = pageRest ? pageRest[0] : postRest ? postRest[0] : null;
+if (!post || !post.length) {
+	return Astro.redirect('/404');
+}
+---
+
+<Layout>
+	<WPSinglePost post={post} />
+</Layout>

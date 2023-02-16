@@ -1,0 +1,28 @@
+---
+import Pagination from '@themes/layouts/components/Pagination.astro';
+import WPListItem from './WPListItem.astro';
+
+const { posts, currentPage, totalPages, queryString, queryPage, queryUrlPath, total } = Astro.props;
+---
+
+<ul>
+	{
+		posts.map((post) => (
+			<li class="mb-10 md:mb-16">
+				<WPListItem post={post} />
+			</li>
+		))
+	}
+</ul>
+{
+	queryString && queryPage && queryUrlPath && total && totalPages && currentPage && (
+		<Pagination
+			queryString={queryString}
+			queryPage={queryPage}
+			queryUrlPath={queryUrlPath}
+			total={total}
+			totalPages={totalPages}
+			currentPage={currentPage}
+		/>
+	)
+}

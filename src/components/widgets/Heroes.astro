@@ -1,0 +1,64 @@
+---
+import { wpapi } from '~/apis/wp-core/posts';
+import { getCategory, getFeaturedImage } from '~/models/Post.astro';
+import TagButton from '@themes/layouts/buttons/TagButton.astro';
+
+const posts = await wpapi.posts().sticky(true);
+const [post, stickyPost2] = posts && posts.length > 0 && posts;
+const image = post && (await getFeaturedImage(post)).full;
+const image2 = post && (await getFeaturedImage(stickyPost2)).full;
+const category = post && post.categories[0] && (await getCategory(post.categories[0]));
+---
+
+<div class="heroes">
+	<section class="featured-posts">
+		{
+			post && (
+				<>
+					<div
+						id="everly_featured_module-63af653d1becd"
+						class="everly-block everly-block--fullwidth everly-featured-posts"
+					>
+						<div class="container">
+							<div class="featured-posts__inner">
+								<article class="post post--horizontal flex flex-row-reverse gap-x-2 post--horizontal-reverse everly-posts-featured">
+									<div class="flex-none post__thumb">
+										<div class="background-img">
+											<img src={image.source_url} alt={post.description} loading="eager" />
+										</div>
+									</div>
+									<div class="grow">
+										<div class="post__text">
+											{category && <TagButton text={category.name} />}
+											<h3 class="post__title font-bold mb-5">
+												<a class="" href={`/post/${post.slug}`}>
+													{post.title.rendered}
+												</a>
+											</h3>
+											<div class="post__excerpt">
+												<div class="excerpt" set:html={post.excerpt.rendered} />
+											</div>
+										</div>
+									</div>
+								</article>
+							</div>
+						</div>
+					</div>
+				</>
+			)
+		}
+	</section>
+
+	<section class="sticky-post-2">
+		<div class="flex flex-row gap-x-12">
+			<div class="flex-none left"><img src={image2.source_url} alt="image" /></div>
+			<div class="flex-grow right flex flex-col justify-center gap-y-5">
+				<h3 class="font-bold"><a href={`/post/${post.slug}`}>{stickyPost2.title.rendered}</a></h3>
+				<div>
+					<div class="excerpt" set:html={stickyPost2.excerpt.rendered} />
+					<a class="view-more pt-5" href={`/post/${post.slug}`}> View More</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

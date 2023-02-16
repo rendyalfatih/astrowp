@@ -1,0 +1,15 @@
+---
+import { wpapi } from '~/apis/wp-core/posts';
+import WPList from '~/components/blog/WPList.astro';
+import BlogLayout from '@themes/layouts/BlogLayout.astro';
+
+const wpPosts = await wpapi.posts();
+---
+
+<BlogLayout>
+	<Fragment slot="title">
+		Our Posts
+		<span>AstroWP</span>
+	</Fragment>
+	<WPList posts={wpPosts} />
+</BlogLayout>

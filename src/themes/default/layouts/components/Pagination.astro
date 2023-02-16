@@ -1,0 +1,62 @@
+---
+const { totalPages, currentPage, queryUrlPath, queryString, queryPage } = Astro.props;
+
+const [querySearchParams, queryStringValue] = queryString;
+const [queryPageParams] = queryPage;
+
+const range = (start, end) => {
+	var foo = [];
+	for (var i = start; i <= end; i++) {
+		foo.push(i);
+	}
+	return foo;
+};
+const numbers = range(1, totalPages);
+const generatePathPage = (val: number) => {
+	if (val == currentPage) return '#';
+	else {
+		return (
+			queryUrlPath +
+			`?` +
+			[
+				`${querySearchParams}=${encodeURIComponent(queryStringValue)}`,
+				`${queryPageParams}=${encodeURIComponent(val)}`,
+			].join('&')
+		);
+	}
+};
+---
+
+<style>
+	.active {
+		background: #ffa978;
+		font-weight: 400;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: white;
+		border-color: #ffa978;
+	}
+	.page-item > a {
+		width: 100%;
+		height: 100%;
+		padding: 1px 2px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+</style>
+<div class="flex flex-row gap-x-2">
+	{
+		numbers.map((val) => {
+			return (
+				<div class="page-item border w-7 h-7 flex rounded-md justify-center items-center text-xs overflow-hidden">
+					<a href={generatePathPage(val)} class={`${val == currentPage ? 'active' : ''}`}>
+						{val}
+					</a>
+				</div>
+			);
+		})
+	}
+</div>

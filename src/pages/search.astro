@@ -1,0 +1,27 @@
+---
+import { wpapi } from '~/apis/wp-core/posts';
+import WPList from '~/components/blog/WPList.astro';
+import BlogLayout from '@themes/layouts/BlogLayout.astro';
+const queryString = Astro.url.searchParams;
+const searchString = queryString.get('q') || '';
+const pageNumber = queryString.get('p') || 1;
+const limit = 5;
+const posts = await wpapi.posts().search(searchString).perPage(limit).page(pageNumber);
+const { total, totalPages } = posts?._paging || {};
+---
+
+<BlogLayout>
+	<Fragment slot="title">
+		Your search Results
+		<span> "{searchString}"</span>
+	</Fragment>
+	<WPList
+		posts={posts}
+		queryString={['q', searchString]}
+		queryPage={['p', pageNumber]}
+		queryUrlPath={'/search'}
+		total={total}
+		totalPages={totalPages}
+		currentPage={pageNumber}
+	/>
+</BlogLayout>

@@ -1,0 +1,15 @@
+---
+import { wpapi } from '~/apis/wp-core/posts';
+import SingleAuthorsPick from './SingleAuthorsPick.astro';
+
+const newsCat = await wpapi.categories().slug(['nihil']);
+const postIdList = newsCat.map((v) => {
+	return v.id;
+});
+const newsPost = await wpapi.posts().categories(postIdList).perPage(5).page(1);
+---
+
+<div class="authors-pick flex flex-col gap-y-6">
+	<div class="title pl-5">Author's Pick</div>
+	{newsPost.map((post) => <SingleAuthorsPick {post} />)}
+</div>

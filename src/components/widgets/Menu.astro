@@ -1,0 +1,28 @@
+---
+const { item } = Astro.props;
+const className = `menu-item menu-item-type-post_type menu-item-object-page menu-item-home ${
+	item.childs.length && 'menu-item-has-children '
+} menu-item-928`;
+---
+
+<li class={className}>
+	{
+		(
+			<a
+				class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+				href={item.url ? item.url : '#'}
+			>
+				{item.title}
+			</a>
+		)
+	}
+	{
+		!!item.childs.length && (
+			<ul class="sub-menu">
+				{item.childs.map((child) => {
+					return <Astro.self item={child} />;
+				})}
+			</ul>
+		)
+	}
+</li>

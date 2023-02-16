@@ -1,0 +1,26 @@
+---
+
+// import Steps from '~/components/widgets/Steps.astro';
+// import Stats from '~/components/widgets/Stats.astro';
+// import CallToAction from '~/components/widgets/CallToAction.astro';
+import Heroes from '~/components/widgets/Heroes.astro';
+import News from '~/components/widgets/News/Index.astro';
+import AuthorsPick from '~/components/widgets/AuthorsPick/AuthorsPick.astro';
+---
+
+<div class="container-base mx-auto pt-24">
+	<Heroes />
+	<div class="flex flex-row gap-x-6">
+		<div class="flex-none news-widget mb-5"><News /></div>
+		<div class="flex-grow authors-pick-widget mb-5"><AuthorsPick/></div>
+	</div>
+	<!-- <Note />
+	<Features />
+	<Steps />
+	<Features2 />
+	<Features3 />
+	<HighlightedPosts />
+	<FAQs />
+	<Stats />
+	<CallToAction /> -->
+</div>

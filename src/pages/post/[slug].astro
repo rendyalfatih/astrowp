@@ -1,0 +1,32 @@
+---
+import Layout from '@themes/layouts/PageLayout.astro';
+import WPSinglePost from '~/components/blog/WPSinglePost.astro';
+import { wpapi } from '~/apis/wp-core/posts';
+
+// console.log({ props: Astro.props });
+
+const { slug } = Astro.params;
+// console.log('slug posts', { slug });
+const wpPost = await wpapi.posts().slug(slug);
+if (!wpPost || !wpPost.length) {
+	return Astro.redirect('/404');
+}
+
+const post = wpPost[0];
+// console.log(JSON.stringify({post}, null, 2));
+// con
+// const url = getCanonical(getPermalink(post.slug, 'post'));
+
+// const meta = {
+// 	title: `${post.title} — ${SITE.name}`,
+// 	description: post.description,
+// 	canonical: post.canonical || url,
+// 	image: await findImage(post.image),
+// 	ogTitle: post.title,
+// 	ogType: 'article',
+// };
+---
+
+<Layout>
+	<WPSinglePost post={post} />
+</Layout>

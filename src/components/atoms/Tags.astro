@@ -1,0 +1,15 @@
+---
+const { tags, class: className = 'text-sm p-0 inline-flex flex-row gap-x-3' } = Astro.props;
+---
+
+{
+	tags && Array.isArray(tags) && (
+		<div class={className}>
+			{tags.map((tag) => (
+				<div class="bg-gray-100 dark:bg-slate-700 inline-block mr-2 mb-2 py-0.5 px-2 lowercase">
+					<a href={`/tag/${tag.slug}`}>{tag.name}</a>
+				</div>
+			))}
+		</div>
+	)
+}

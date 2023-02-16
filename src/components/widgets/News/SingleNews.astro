@@ -1,0 +1,15 @@
+---
+const {post} = Astro.props
+const {featured_image_src: image_url,title, slug} = post
+
+---
+<div class="single-news">
+    <div class="img flex justify-center">
+        <img src={image_url} alt={title}/>
+    </div>
+    <div class="text p-5 border border-grey">
+        <h3 class="text-base font-bold title">
+            <a href={`/post/${slug}`} set:html={`${post.title.rendered}`}></a>
+        </h3>
+    </div>
+</div>

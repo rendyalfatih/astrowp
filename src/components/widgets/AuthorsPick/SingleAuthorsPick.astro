@@ -1,0 +1,90 @@
+---
+import moment from 'moment';
+import { wpapi } from '~/apis/wp-core/posts';
+const { post } = Astro.props;
+const { featured_image_src: image_url, title, slug } = post;
+const date = moment(post.date);
+const [month, day, year] = [date.format('MMM'), date.format('D'), date.format('YYYY')];
+const author = await wpapi.users().id(post.author);
+const avatar = author.simple_local_avatar || author.avatar_urls;
+const photo = avatar && avatar['96'];
+const { meta } = author;
+[];
+const { first_name, last_name } = meta || {};
+// console.log('author', { post });
+---
+
+<div class="single-authors flex flex-row gap-x-6">
+	<div class="img flex-none flex justify-center">
+		<img src={image_url} alt={title} />
+	</div>
+	<div class="text p-5 flex-grow">
+		<div class="base-date uppercase flex flex-row gap-x-2">
+			<span class="day">{day}</span>
+			<span class="month-year flex items-center">{month} <br /> {year}</span>
+		</div>
+		<h3 class="text-xl font-bold title">
+			<a href={`/post/${slug}`} set:html={`${post.title.rendered}`} />
+		</h3>
+		<div class="text-base excerpt" set:html={`${post.excerpt.rendered}`} />
+
+		<div class="base-author capitalize flex flex-row gap-x-2">
+			<span class="image rounded rounded-full overflow-hidden">
+				<img src={photo} alt={author.name} />
+			</span>
+			<div class="author-detail flex flex-col justify-center">
+				<span>{author.name}</span>
+				<em > {first_name} {last_name}</em>
+			</div>
+		</div>
+	</div>
+</div>
+<style>
+    .single-authors {
+        margin-bottom: 25px;
+		margin-right: 25px;
+    }
+	.single-authors:nth-child(odd) {
+		flex-direction: row-reverse;
+		margin-left: 25px;
+		margin-right: 0px;
+	}
+	.single-authors .img {
+		width: 370px;
+		height: auto;
+		overflow: hidden;
+	}
+	.single-authors .title {
+		margin-bottom: 15px;
+	}
+	.single-authors .excerpt {
+		margin-bottom: 30px;
+		color: var(--black-font);
+	}
+	.base-date {
+		color: var(--black-font);
+		font-family: 'Rubik', Helvetica, sans-serif;
+		font-weight: 400;
+		opacity: 0.8;
+		margin-bottom: 20px;
+	}
+	.base-date .day {
+		font-size: 36px;
+	}
+	.base-date .month-year {
+		line-height: 16px;
+		font-size: 13px;
+	}
+	.base-author .image {
+		height: 50px;
+		overflow: hidden;
+		width: 50px;
+	}
+	
+	.author-detail em {
+		font-style: normal;
+		color: var(--black-pure);
+		opacity: 0.4;
+		font-size: 12px;
+	}
+</style>

@@ -1,0 +1,138 @@
+:root {
+	--blue: #1e90ff;
+	--yellow: #FCBD00;
+	--white: #ffffff;
+    --grey-font: #737373;
+    --black-font: #393939;
+	--black-pure: #000000;
+    --super-black: rgba(0,0,0,0.8);
+    
+}
+
+.big-font {
+	font-family: "PT Serif", Arial, Helvetica, sans-serif;
+}
+
+h3 {
+	font-family: "PT Serif", Arial, Helvetica, sans-serif;
+	font-size: 4.015rem;
+	line-height: 1.28;
+}
+
+
+
+.featured-posts .post__text {
+	max-width: 768px;
+	overflow: hidden;
+	z-index: 20;
+	position: absolute;
+}
+
+.featured-posts .everly-posts-featured .post__title a {
+	color: #161416;
+	background: #fff;
+	line-height: 1.1;
+	box-shadow: 30px 0 0 #fff;
+}
+
+.featured-posts .everly-posts-featured .post__title a:hover,
+h3 a:hover, a:hover {
+	color: var(--yellow);
+}
+
+.featured-posts .everly-posts-featured .post__thumb {
+	z-index: 20;
+	margin-left: 0;
+	width: 570px;
+	height: auto;
+	position: relative;
+	float: right;
+	content: "";
+}
+
+.featured-posts .post__thumb {
+	display: flex;
+	text-align: center;
+	max-width: 570px;
+	justify-content: center;
+}
+
+.featured-posts .post__thumb img {
+	max-width: 360px;
+	height: auto;
+}
+
+.featured-posts .everly-posts-featured .post__excerpt {
+	font-weight: 400;
+	font-size: 14px;
+	text-decoration: none;
+	border-bottom: none;
+	color: #999899;
+	margin-top: 0;
+	position: relative;
+	padding-bottom: 50px;
+	margin-bottom: 40px;
+}
+
+.featured-posts .everly-posts-featured .post__excerpt:before {
+	content: "";
+	position: absolute;
+	height: 8px;
+	width: 100px;
+	background: #FCBD00;
+	bottom: 0;
+	border-bottom: 0;
+	left: 0;
+}
+
+.post__excerpt,
+.entry-excerpt {
+	max-width: 36em;
+	margin-top: 0.6em;
+	margin-bottom: 0.6em;
+	color: rgba(0, 0, 0, 0.6);
+	font-size: 1rem;
+	line-height: 1.6;
+}
+
+.container-base {
+	max-width: 1200px;
+	margin: 0px auto;
+}
+.heroes a.view-more{
+    color: var(--grey-font);
+    display: inline-flex;
+    border-bottom: 1px solid #325214;
+}
+.heroes .excerpt{
+    color: var(--black-font);
+}
+
+.sticky-post-2 .left{
+	width: 50%;
+	display: flex;
+	/* justify-content: end; */
+}
+.sticky-post-2 img{
+	max-width: 480px;
+}
+/** News Widget **/
+
+.news-widget{
+	max-width: 268px;
+}
+.home-news > .title{
+	border-left: 5px solid var(--yellow);
+	font-family: "PT Serif", Arial, Helvetica, sans-serif;
+}
+.home-news .single-news .title{
+	font-family: "PT Serif", Arial, Helvetica, sans-serif;
+}
+
+/** Authors Pick Widget **/
+.authors-pick > .title{
+	font-family: "PT Serif", Arial, Helvetica, sans-serif;
+	font-size: 3.452rem;
+    line-height: 1.2;
+	font-weight: 700;
+}

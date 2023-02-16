@@ -1,0 +1,15 @@
+---
+import { wpapi } from '~/apis/wp-core/posts';
+import SingleNews from './SingleNews.astro';
+
+const newsCat = await wpapi.categories().slug(['news']);
+const postIdList = newsCat.map((v) => {
+	return v.id;
+});
+const newsPost = await wpapi.posts().categories(postIdList).perPage(5).page(1);
+---
+
+<div class="home-news flex flex-col gap-y-6">
+	<div class="title pl-5">News</div>
+	{newsPost.map((post) => <SingleNews {post} />)}
+</div>
