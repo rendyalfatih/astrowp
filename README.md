@@ -17,50 +17,8 @@
 
 <br>
 
-<img src="./screenshot.png" alt="AstroWP Theme Screenshot">
-
-[![onWidget](https://custom-icon-badges.demolab.com/badge/made%20by%20-onWidget-556bf2?style=flat-square&logo=onwidget&logoColor=white&labelColor=101827)](https://onwidget.com)
-[![License](https://img.shields.io/github/license/onwidget/AstroWP?style=flat-square&color=dddddd&labelColor=000000)](https://github.com/onwidget/AstroWP/blob/main/LICENSE.md)
-[![Maintained](https://img.shields.io/badge/maintained%3F-yes-brightgreen.svg?style=flat-square)](https://github.com/onwidget)
-[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/onwidget/AstroWP#contributing)
-[![Known Vulnerabilities](https://snyk.io/test/github/onwidget/AstroWP/badge.svg?style=flat-square)](https://snyk.io/test/github/onwidget/AstroWP)
-[![Stars](https://img.shields.io/github/stars/onwidget/AstroWP.svg?style=social&label=stars&maxAge=86400&color=ff69b4)](https://github.com/onwidget/AstroWP)
-[![Forks](https://img.shields.io/github/forks/onwidget/AstroWP.svg?style=social&label=forks&maxAge=86400&color=ff69b4)](https://github.com/onwidget/AstroWP)
-
 <br>
 
-<details open>
-<summary>Table of Contents</summary>
-
-- [🚀 AstroWP](#-astrowp)
-  - [Features](#features)
-  - [Demo](#demo)
-  - [Getting started](#getting-started)
-    - [Project structure](#project-structure)
-    - [Commands](#commands)
-    - [Configuration](#configuration)
-    - [Deploy](#deploy)
-      - [Deploy to production (manual)](#deploy-to-production-manual)
-      - [Deploy to Netlify](#deploy-to-netlify)
-      - [Deploy to Vercel](#deploy-to-vercel)
-  - [Roadmap](#roadmap)
-    - [Base](#base)
-    - [Advanced](#advanced)
-  - [Frequently Asked Questions](#frequently-asked-questions)
-  - [Related projects](#related-projects)
-  - [Contributing](#contributing)
-  - [Acknowledgements](#acknowledgements)
-  - [License](#license)
-
-</details>
-
-<br>
-
-## Demo
-
-📌 [https://AstroWP.vercel.app/](https://AstroWP.vercel.app/)
-
-<br>
 
 ## Getting started
 
@@ -122,8 +80,6 @@ Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page
 There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
 
 Any static assets, like images, can be placed in the `public/` directory if they do not require any transformation or in the `assets/` directory if they are imported directly.
-
-[![Edit AstroWP on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://githubbox.com/onwidget/AstroWP/tree/main)
 
 > 🧑‍🚀 **Seasoned astronaut?** Delete this file. Update `config.mjs` and contents. Have fun!
 
@@ -206,18 +162,6 @@ Now, your website is ready to be deployed. All generated files are located at
 `dist` folder, which you can deploy the folder to any hosting service you
 prefer.
 
-#### Deploy to Netlify
-
-Clone this repository on own GitHub account and deploy to Netlify:
-
-[![Netlify Deploy button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/onwidget/AstroWP)
-
-#### Deploy to Vercel
-
-Clone this repository on own GitHub account and deploy to Vercel:
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fonwidget%2FAstroWP)
-
 <br>
 
 ## Roadmap
@@ -245,11 +189,6 @@ Clone this repository on own GitHub account and deploy to Vercel:
 -
 
 <br>
-
-## Related projects
-
-- [Qwind](https://qwind.pages.dev/) - A template to make your website using Qwik + Tailwind CSS.
-
 ## Contributing
 
 If you have any idea, suggestions or find any bugs, feel free to open a discussion, an issue or create a pull request.
