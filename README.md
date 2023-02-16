@@ -17,6 +17,8 @@
 
 <br>
 
+<img src="./screenshoot.png" alt="AstroWP Theme Screenshot">
+
 <br>
 
 
